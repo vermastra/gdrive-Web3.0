@@ -1,24 +1,36 @@
 import { useEffect } from "react";
 import useEth from "../../contexts/EthContext/useEth";
 import "./Modal.css";
+
 const Modal = ({ setModalOpen }) => {
   const { state: { contract, accounts } } = useEth();
+  // const [options,setOptions]=useState(null);
 
   const sharing = async () => {
     const address = document.querySelector(".address").value;
-    // await contract.allow(address);
+    if(address===""){
+      alert("Please enter the address");
+      return;
+    }
     await contract.methods.allow(address).send({ from: accounts[0] });
     setModalOpen(false);
   };
+
+  const withdraw = async () => {
+    const address = document.querySelector("#selectNumber").value;
+    await contract.methods.disallow(address).send({ from: accounts[0] });
+    setModalOpen(false);
+  }
+
   useEffect(() => {
     const accessList = async () => {
-      // const addressList = await contract.shareAccess();
       const addressList = await contract.methods.shareAccess().call({ from: accounts[0] });
       let select = document.querySelector("#selectNumber");
       const options = addressList;
 
       for (let i = 0; i < options.length; i++) {
-        let opt = options[i];
+        if(options[i].access===false)continue;
+        let opt = options[i].user;
         let e1 = document.createElement("option");
         e1.textContent = opt;
         e1.value = opt;
@@ -26,7 +38,9 @@ const Modal = ({ setModalOpen }) => {
       }
     };
     accessList();
-  }, [accounts,contract]);
+    // console.log(options);
+  }, [accounts, contract]);
+
   return (
     <>
       <div className="modalBackground">
@@ -54,6 +68,7 @@ const Modal = ({ setModalOpen }) => {
               Cancel
             </button>
             <button onClick={() => sharing()}>Share</button>
+            <button style={{backgroundColor: "#dccd13"}} onClick={() => withdraw()}>Withdraw</button>
           </div>
         </div>
       </div>
