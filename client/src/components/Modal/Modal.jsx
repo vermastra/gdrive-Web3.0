@@ -4,7 +4,6 @@ import "./Modal.css";
 
 const Modal = ({ setModalOpen }) => {
   const { state: { contract, accounts } } = useEth();
-  // const [options,setOptions]=useState(null);
 
   const sharing = async () => {
     const address = document.querySelector(".address").value;
@@ -38,7 +37,6 @@ const Modal = ({ setModalOpen }) => {
       }
     };
     accessList();
-    // console.log(options);
   }, [accounts, contract]);
 
   return (
