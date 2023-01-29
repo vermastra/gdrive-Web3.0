@@ -1,6 +1,5 @@
 import { EthProvider } from "./contexts/EthContext";
 import { useState } from "react";
-import useEth from "./contexts/EthContext/useEth";
 import FileUpload from "./components/FileUpload/FileUpload";
 import Display from "./components/Display/Display";
 import Modal from "./components/Modal/Modal";
