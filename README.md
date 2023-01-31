@@ -7,4 +7,4 @@ To see images of other user one need to enter the account address of the user wh
 
 Hosted link: https://gdrive-web3.netlify.app
 
-Note: Make sure your ganache is running because the truffle is configured to ganache.
+Note: Make sure your ganache is running or you are using Gorli testnet.
