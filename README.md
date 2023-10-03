@@ -1,4 +1,5 @@
 # gdrive-Web3.0
+Its a beginner-friendly Blockchain project.
 GDRIVE‑WEB3.0 is a Web3.0 application to store images on IPFS Pinata. Here owner can choose images which he wants to store and click upload to store it.
 
 Later on can can also give access of those images to view by other users. To do this owner need to enter the account address of the user with whom he wants to share. Later on he can withdraw the access. 
